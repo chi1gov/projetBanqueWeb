@@ -17,7 +17,7 @@
  <form method="post" action="Connexion">
  	<p> Nom : <input type="text" name="nom"/> </p>
  	<p> Prenom : <input type="text" name="prenom"/> </p>
-	<input type="submit" value="Connection" />
+	<input type="submit" value="Se connecter" />
  </form>
  
 <c:choose>
