@@ -18,7 +18,6 @@ public class ClientDAO extends DAO{
 		Connection con;
 		try {
 			con = this.getConnection();
-			System.out.println("connection reussie");
 			Statement st = con.createStatement();
 			PreparedStatement pst = con.prepareStatement("SELECT COUNT(*) FROM PARTICULIER WHERE NOM = ? AND PRENOM = ?");
 			pst.setString(1, nom);

@@ -7,6 +7,12 @@
 <title>Accueil Client</title>
 </head>
 <body>
-<p>Bonjour</p>
+	<h3 style="text-align:center">Bienvenue</h3>
+	<p>Bonjour ${sessionScope.prenom } ${sessionScope.nom }, que souhaitez-vous faire ?</p>
+	<div id=menu>
+		<a href="">Modifiez vos informations personnelles.</a><br/>
+		<a href="">Gérez vos comptes.</a><br/>
+		<a href="">Se déconnecter.</a>
+	</div>
 </body>
 </html>

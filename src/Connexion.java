@@ -36,14 +36,6 @@ public class Connexion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Passage dans goGet de Connexion");
-		HttpSession laSession = request.getSession();
-		String msgErreur = "AUCUN";
-		session.setAttribute("error", msgErreur);
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		if (rd != null) {
-			rd.forward(request, response);
-		}
 	}
 
 	/**
@@ -61,14 +53,17 @@ public class Connexion extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		
+		HttpSession session = request.getSession(true);
+		
 		if(!nom.isEmpty() && !prenom.isEmpty()){
-			if(sonDAOclient.identification(request.getParameter("nom"), request.getParameter("prenom"))){
+			if(sonDAOclient.identification(nom, prenom)){
+				session.setAttribute("nom", nom);
+				session.setAttribute("prenom", prenom);
 				RequestDispatcher rd=request.getRequestDispatcher("accueilClient.jsp");
 				rd.forward(request, response);
 			}
 			else
 			{
-				HttpSession session = request.getSession(true);
 				String msgErreur = new String("Utilisateur inconnu.");
 				session.setAttribute("error", msgErreur);
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
@@ -78,13 +73,10 @@ public class Connexion extends HttpServlet {
 			}
 		}
 		else{
-			HttpSession session = request.getSession(true);
 			String msgErreur = new String("Remplir tous les champs.");
 			session.setAttribute("error", msgErreur);
-			System.out.println("setAttribute msgErreur done!");
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			if (rd != null) {
-				System.out.println("Actualisation");
 				rd.forward(request, response);
 			}
 		}

@@ -13,7 +13,7 @@
  <!-- nom : ______ prenom : ________  |CONNECTION| -->
  <!-- controleur connexion.java (servlet) -->
  <!--  doPost(...) -->
- 
+ <h3 style="text-align:center">Ma Banque</h3>
  <form method="post" action="Connexion">
  	<p> Nom : <input type="text" name="nom"/> </p>
  	<p> Prenom : <input type="text" name="prenom"/> </p>

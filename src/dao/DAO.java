@@ -24,7 +24,7 @@ public class DAO {
 			initContext = new InitialContext();
 			Context envContext  = (Context)initContext.lookup("java:/comp/env");
 			this.ds = (DataSource)envContext.lookup("jdbc/mydb");
-			System.out.println("contexte chargé");
+			System.out.println("Contexte chargé.");
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,9 +34,8 @@ public class DAO {
 
 	protected Connection getConnection() throws SQLException {
 		// retourne une connexion ˆ la base
-		System.out.println("recupération de la connection");
 		Connection conn = this.ds.getConnection();
-		System.out.println("Connection get!");
+		System.out.println("Connexion à la base de données obtenue.");
 		return conn;
 		}
 
