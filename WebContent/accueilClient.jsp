@@ -12,7 +12,7 @@
 	<div id=menu>
 		<a href="ModifierInfosPerso">Modifiez vos informations personnelles.</a><br/>
 		<a href="">Gérez vos comptes.</a><br/>
-		<a href="Connexion">Se déconnecter.</a>
+		<a href="Deconnexion">Se déconnecter.</a>
 	</div>
 </body>
 </html>

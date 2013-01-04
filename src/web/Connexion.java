@@ -34,12 +34,6 @@ public class Connexion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(true);
-		session.removeAttribute("nom");
-		session.removeAttribute("prenom");
-		session.removeAttribute("adresse");
-		session.invalidate();
-		System.out.println("Session expirée.");
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		if (rd != null) {
 			rd.forward(request, response);
