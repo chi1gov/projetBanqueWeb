@@ -35,8 +35,15 @@ public class Connexion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
+		session.removeAttribute("nom");
+		session.removeAttribute("prenom");
+		session.removeAttribute("adresse");
 		session.invalidate();
 		System.out.println("Session expirée.");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		if (rd != null) {
+			rd.forward(request, response);
+		}
 	}
 
 	/**
@@ -60,6 +67,10 @@ public class Connexion extends HttpServlet {
 			if(sonDAOclient.identification(nom, prenom)){
 				session.setAttribute("nom", nom);
 				session.setAttribute("prenom", prenom);
+				String adresse = sonDAOclient.getAdresse(nom, prenom);
+				if(!adresse.isEmpty()){
+					session.setAttribute("adresse", adresse);
+				}
 				RequestDispatcher rd=request.getRequestDispatcher("accueilClient.jsp");
 				rd.forward(request, response);
 			}

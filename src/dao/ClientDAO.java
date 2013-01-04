@@ -18,7 +18,6 @@ public class ClientDAO extends DAO{
 		Connection con;
 		try {
 			con = this.getConnection();
-			Statement st = con.createStatement();
 			PreparedStatement pst = con.prepareStatement("SELECT COUNT(*) FROM PARTICULIER WHERE NOM = ? AND PRENOM = ?");
 			pst.setString(1, nom);
 			pst.setString(2, prenom);
@@ -33,5 +32,39 @@ public class ClientDAO extends DAO{
 		}
 
 		return false;
+	}
+	
+	public String getAdresse(String nom, String prenom){
+		Connection con;
+		try {
+			con = this.getConnection();
+			PreparedStatement pst = con.prepareStatement("SELECT ADRESSE FROM PARTICULIER WHERE NOM = ? AND PRENOM = ?");
+			pst.setString(1, nom);
+			pst.setString(2, prenom);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()){
+				return rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setAdresse(String nom, String prenom, String adresse){
+		Connection con;
+		try {
+			con = this.getConnection();
+			PreparedStatement pst = con.prepareStatement("UPDATE PARTICULIER SET ADRESSE=? WHERE NOM = ? AND PRENOM = ?");
+			pst.setString(1, adresse);
+			pst.setString(2, nom);
+			pst.setString(3, prenom);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -10,7 +10,11 @@
 	<h3 style="text-align:center">Modification de vos informations personnelles</h3>
 	<p>Prénom : ${sessionScope.prenom } <br/>
 	Nom : ${sessionScope.nom }<br/>
-	Adresse : <input type='text' value="${requestScope.adresse }"/><br/>
+	<form method="post" action="ModifierInfosPerso">
+		Adresse : <input type='text' name="adresse" value="${sessionScope.adresse }" /><br/>
+		<input type="submit" value="Valider"/>
+	</form>
+	
 	<a href="accueilClient.jsp">retour à l'accueil</a></p>
 </body>
 </html>
